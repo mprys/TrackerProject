@@ -1,5 +1,6 @@
 package com.tracker.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,11 +13,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="Users")
 @NamedQueries({@NamedQuery(name="User.loadAllUser", query="Select u From User u")})
-public class User extends BaseEntity {
+public class User extends BaseEntity implements Serializable {
+
+	@Transient
+	private static final long serialVersionUID = 6520921787424463951L;
 
 	@Column(name="userName", nullable=false)
 	private String userName;

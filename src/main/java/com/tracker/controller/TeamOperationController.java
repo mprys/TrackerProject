@@ -2,9 +2,12 @@ package com.tracker.controller;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ConversionServiceFactoryBean;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -40,9 +43,14 @@ public class TeamOperationController {
 
 	Collection<User> users;
 	
+	@Autowired
+	TeamConversion conversion;
+ 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder){
 		binder.registerCustomEditor(User.class, new UserEditor(users));
+		//binder.registerCustomEditor(Team.class, teamEditor);
+		//binder.setConversionService(conversionService);
 	}
 	
 	@RequestMapping(value="/team", method=RequestMethod.GET)
@@ -138,6 +146,9 @@ public class TeamOperationController {
 		
 		model.addAttribute("project", new Project());
 		model.addAttribute("statusTypes", Status.values());
+		
+		Collection<Team> teams = teamSvc.loadAllTeams();
+		model.addAttribute("teams", teams);
 		
 		return "project";
 	}

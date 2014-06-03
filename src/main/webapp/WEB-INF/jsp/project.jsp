@@ -44,8 +44,8 @@
 			<form:select path="status">
 				<form:options items="${statusTypes}"  />
 			</form:select><br>
-			<form:select path="team.id">
-				<form:options items="${teams}" itemLabel="text" itemValue="id" />
+			<form:select path="team">
+				<form:options items="${teams}" itemLabel="name" itemValue="id" />
 			</form:select><br>
 			<c:choose>
                 <c:when test="${project.id == null}">

@@ -1,5 +1,6 @@
 package com.tracker.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,15 +14,19 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.BatchSize;
 
 @Entity
 @Table(name="Teams")
 @NamedQueries({@NamedQuery(name="loadAllTeams", query="Select T From Team T")})
-public class Team extends BaseEntity {
+public class Team extends BaseEntity implements Serializable {
 
-	
+
+	@Transient
+	private static final long serialVersionUID = -5104039842982989400L;
+
 	@Column(name="name", nullable=false)
 	private String name;
 	
