@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>TrackerApp</name>
-  <description>Issue tracker application</description>
+  <description>Issue Tracker Application</description>
   
   <properties>
         <hibernate.version>4.2.4.Final</hibernate.version>
@@ -40,8 +40,7 @@
             </plugin>
         </plugins>
     </build>
-   
-	<dependencies>
+    <dependencies>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
@@ -183,5 +182,5 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.2.2</version>
 		</dependency>
-	</dependencies> 
+    </dependencies> 
 </project>
